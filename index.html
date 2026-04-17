@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solara Cove Hotel | Coastal Luxury Retreat</title>
+    <meta
+      name="description"
+      content="Escape to Solara Cove Hotel, a refined coastal sanctuary with curated suites, spa rituals, and unforgettable sunset dining."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --sand: #f6efe7;
+        --cream: #fffaf2;
+        --ink: #1f2a30;
+        --muted: #6e7673;
+        --sea: #0f636b;
+        --sea-deep: #0a4850;
+        --gold: #b89056;
+        --card: rgba(255, 250, 242, 0.84);
+        --shadow: 0 20px 40px rgba(9, 28, 32, 0.15);
+        --radius: 20px;
+        --radius-sm: 12px;
+        --max: 1120px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Manrope", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(
+            circle at 20% 15%,
+            rgba(184, 144, 86, 0.15),
+            transparent 48%
+          ),
+          radial-gradient(
+            circle at 80% 30%,
+            rgba(15, 99, 107, 0.15),
+            transparent 45%
+          ),
+          linear-gradient(135deg, #f8f0e6 0%, #f5efe6 35%, #f0ece6 100%);
+        line-height: 1.6;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(100% - 2rem, var(--max));
+        margin-inline: auto;
+      }
+
+      .top-nav {
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 40;
+        backdrop-filter: blur(10px);
+        background: rgba(246, 239, 231, 0.75);
+        border-bottom: 1px solid rgba(31, 42, 48, 0.08);
+      }
+
+      .top-nav .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 0;
+        gap: 1rem;
+      }
+
+      .brand {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.55rem;
+        letter-spacing: 0.04em;
+        font-weight: 700;
+        color: var(--sea-deep);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.2rem;
+        color: var(--ink);
+        font-size: 0.95rem;
+        font-weight: 600;
+      }
+
+      .nav-links a {
+        opacity: 0.85;
+        transition: opacity 180ms ease;
+      }
+
+      .nav-links a:hover {
+        opacity: 1;
+      }
+
+      .book-btn {
+        border: 0;
+        font: inherit;
+        font-weight: 700;
+        color: #fff;
+        background: linear-gradient(
+          160deg,
+          var(--sea) 0%,
+          var(--sea-deep) 100%
+        );
+        border-radius: 999px;
+        padding: 0.65rem 1.15rem;
+        cursor: pointer;
+        transition:
+          transform 180ms ease,
+          box-shadow 220ms ease;
+        box-shadow: 0 10px 22px rgba(10, 72, 80, 0.25);
+      }
+
+      .book-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 30px rgba(10, 72, 80, 0.28);
+      }
+
+      .hero {
+        min-height: 100svh;
+        display: grid;
+        align-items: end;
+        padding-top: 5.5rem;
+        background:
+          linear-gradient(
+            to top,
+            rgba(10, 32, 34, 0.58),
+            rgba(10, 32, 34, 0.26)
+          ),
+          url("https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2000&q=80")
+            center/cover no-repeat;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: auto -25% -35% -25%;
+        height: 60%;
+        background: radial-gradient(
+          circle at center,
+          rgba(255, 250, 242, 0.2),
+          transparent 68%
+        );
+        pointer-events: none;
+      }
+
+      .hero-content {
+        position: relative;
+        padding-bottom: 4.5rem;
+        max-width: 760px;
+        animation: liftIn 900ms ease-out both;
+      }
+
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.85);
+        margin-bottom: 1rem;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Cormorant Garamond", serif;
+        line-height: 1.06;
+        letter-spacing: 0.01em;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 5.3vw, 5rem);
+        margin-bottom: 1rem;
+        max-width: 18ch;
+        text-wrap: balance;
+      }
+
+      .hero p {
+        max-width: 52ch;
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        color: rgba(255, 255, 255, 0.92);
+        margin-bottom: 2rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        margin-bottom: 2.25rem;
+      }
+
+      .btn {
+        border: 0;
+        font: inherit;
+        font-weight: 700;
+        border-radius: 999px;
+        padding: 0.8rem 1.4rem;
+        cursor: pointer;
+        transition:
+          transform 160ms ease,
+          background 200ms ease;
+      }
+
+      .btn-primary {
+        color: #fff;
+        background: linear-gradient(160deg, var(--gold), #9f7740);
+        box-shadow: 0 10px 24px rgba(159, 119, 64, 0.34);
+      }
+
+      .btn-secondary {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        backdrop-filter: blur(6px);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        max-width: 520px;
+      }
+
+      .hero-stats article {
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: var(--radius-sm);
+        padding: 0.85rem;
+        backdrop-filter: blur(6px);
+        animation: fadeInUp 850ms ease-out both;
+      }
+
+      .hero-stats article:nth-child(2) {
+        animation-delay: 140ms;
+      }
+
+      .hero-stats article:nth-child(3) {
+        animation-delay: 240ms;
+      }
+
+      .hero-stats h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.1rem;
+        color: #fff;
+      }
+
+      .hero-stats p {
+        margin: 0;
+        font-size: 0.84rem;
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      main {
+        padding-block: 5rem;
+      }
+
+      section {
+        margin-bottom: 5.5rem;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .section-head h2 {
+        font-size: clamp(2rem, 4vw, 3.1rem);
+        max-width: 12ch;
+        color: var(--sea-deep);
+      }
+
+      .section-head p {
+        max-width: 48ch;
+        color: var(--muted);
+      }
+
+      .rooms-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.1rem;
+      }
+
+      .room-card {
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: var(--card);
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(184, 144, 86, 0.16);
+        transform: translateY(18px);
+        opacity: 0;
+        animation: fadeInUp 700ms ease forwards;
+      }
+
+      .room-card:nth-child(2) {
+        animation-delay: 120ms;
+      }
+
+      .room-card:nth-child(3) {
+        animation-delay: 240ms;
+      }
+
+      .room-card img {
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+      }
+
+      .room-card .body {
+        padding: 1.05rem;
+      }
+
+      .room-card h3 {
+        font-size: 1.65rem;
+        margin-bottom: 0.35rem;
+        color: var(--ink);
+      }
+
+      .room-card p {
+        color: var(--muted);
+        font-size: 0.94rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .room-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.89rem;
+        font-weight: 600;
+      }
+
+      .amenities {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 1.3rem;
+        align-items: stretch;
+      }
+
+      .amenity-photo {
+        border-radius: var(--radius);
+        overflow: hidden;
+        min-height: 400px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(15, 99, 107, 0.14);
+      }
+
+      .amenity-photo img {
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .amenity-list {
+        display: grid;
+        gap: 0.85rem;
+      }
+
+      .amenity-item {
+        background: var(--card);
+        border-radius: var(--radius-sm);
+        border: 1px solid rgba(15, 99, 107, 0.16);
+        padding: 1rem;
+        box-shadow: 0 10px 26px rgba(9, 28, 32, 0.08);
+      }
+
+      .amenity-item h3 {
+        font-size: 1.45rem;
+        margin-bottom: 0.2rem;
+        color: var(--sea-deep);
+      }
+
+      .amenity-item p {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .testimonial-wrap {
+        background:
+          linear-gradient(
+            125deg,
+            rgba(10, 72, 80, 0.93),
+            rgba(14, 96, 104, 0.9)
+          ),
+          url("https://images.unsplash.com/photo-1519821172141-b5d8f5f8f8ac?auto=format&fit=crop&w=1500&q=80")
+            center/cover;
+        border-radius: var(--radius);
+        color: #f9f6f0;
+        padding: clamp(1.3rem, 3vw, 2.2rem);
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.95rem;
+        margin-top: 1.1rem;
+      }
+
+      blockquote {
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: var(--radius-sm);
+        padding: 1rem;
+      }
+
+      blockquote p {
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 0.94rem;
+        margin-bottom: 0.75rem;
+      }
+
+      cite {
+        font-style: normal;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 0.85rem;
+        letter-spacing: 0.02em;
+      }
+
+      .cta {
+        position: relative;
+        border-radius: var(--radius);
+        overflow: hidden;
+        min-height: 330px;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        color: #fff;
+        background:
+          linear-gradient(rgba(21, 38, 41, 0.5), rgba(21, 38, 41, 0.5)),
+          url("https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=1800&q=80")
+            center/cover;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+      }
+
+      .cta-content {
+        padding: 1.5rem;
+        max-width: 55ch;
+      }
+
+      .cta h2 {
+        font-size: clamp(2.1rem, 4vw, 3.4rem);
+        margin-bottom: 0.65rem;
+      }
+
+      .cta p {
+        margin-bottom: 1.2rem;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      footer {
+        border-top: 1px solid rgba(31, 42, 48, 0.12);
+        padding: 1.6rem 0 2.2rem;
+        color: #616a68;
+        font-size: 0.92rem;
+        background: rgba(255, 250, 242, 0.55);
+      }
+
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .fade-section {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+          opacity 520ms ease,
+          transform 600ms ease;
+      }
+
+      .fade-section.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes liftIn {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 990px) {
+        .nav-links {
+          display: none;
+        }
+
+        .rooms-grid,
+        .testimonial-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .amenities {
+          grid-template-columns: 1fr;
+        }
+
+        .amenity-photo {
+          min-height: 320px;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .top-nav .container {
+          padding: 0.85rem 0;
+        }
+
+        .brand {
+          font-size: 1.3rem;
+        }
+
+        .book-btn {
+          padding: 0.56rem 0.95rem;
+          font-size: 0.84rem;
+        }
+
+        .hero {
+          padding-top: 4.8rem;
+        }
+
+        .hero-content {
+          padding-bottom: 2.8rem;
+        }
+
+        .hero-stats,
+        .rooms-grid,
+        .testimonial-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section-head {
+          display: block;
+        }
+
+        .section-head h2 {
+          margin-bottom: 0.65rem;
+        }
+
+        section {
+          margin-bottom: 4rem;
+        }
+
+        main {
+          padding-block: 3.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="top-nav">
+      <div class="container">
+        <a href="#home" class="brand">Solara Cove</a>
+        <nav class="nav-links">
+          <a href="#rooms">Rooms</a>
+          <a href="#amenities">Amenities</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#stay">Stay</a>
+        </nav>
+        <button class="book-btn" type="button">Book Now</button>
+      </div>
+    </header>
+
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <p class="eyebrow">Coastal Luxury Hotel</p>
+        <h1>Wake up to sapphire tides and warm golden light.</h1>
+        <p>
+          Solara Cove is a design-led oceanfront escape where sunlit suites,
+          restorative rituals, and chef-crafted evenings come together for stays
+          that feel cinematic and deeply restful.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" type="button">
+            Reserve Your Suite
+          </button>
+          <button class="btn btn-secondary" type="button">
+            Explore Experiences
+          </button>
+        </div>
+        <div class="hero-stats">
+          <article>
+            <h3>4.9/5</h3>
+            <p>Guest satisfaction score</p>
+          </article>
+          <article>
+            <h3>120+</h3>
+            <p>Ocean-view suites</p>
+          </article>
+          <article>
+            <h3>24/7</h3>
+            <p>Concierge and room service</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section class="container fade-section" id="rooms">
+        <div class="section-head">
+          <h2>Signature Stays</h2>
+          <p>
+            Every room is curated with natural textures, panoramic windows, and
+            tactile details that make every sunrise and sunset part of your
+            private ritual.
+          </p>
+        </div>
+
+        <div class="rooms-grid">
+          <article class="room-card">
+            <img
+              src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=80"
+              alt="Elegant suite with ocean-facing bed and balcony"
+            />
+            <div class="body">
+              <h3>Horizon Suite</h3>
+              <p>
+                Floor-to-ceiling sea views, rain shower, and a private terrace
+                designed for twilight dining.
+              </p>
+              <div class="room-meta">
+                <span>2 Guests</span>
+                <span>From $340/night</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <img
+              src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80"
+              alt="Modern deluxe room with warm lighting and lounge chair"
+            />
+            <div class="body">
+              <h3>Deluxe Coastal Room</h3>
+              <p>
+                Soft neutral palette, handcrafted wood accents, and an expansive
+                lounge corner for slow mornings.
+              </p>
+              <div class="room-meta">
+                <span>2-3 Guests</span>
+                <span>From $260/night</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <img
+              src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1200&q=80"
+              alt="Luxury penthouse interior with city and ocean view"
+            />
+            <div class="body">
+              <h3>Skyline Penthouse</h3>
+              <p>
+                Top-floor sanctuary with private plunge pool, bespoke minibar,
+                and sunset-facing living room.
+              </p>
+              <div class="room-meta">
+                <span>4 Guests</span>
+                <span>From $620/night</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="container fade-section" id="amenities">
+        <div class="section-head">
+          <h2>Curated Amenities</h2>
+          <p>
+            Balance adventure and stillness with a collection of thoughtful
+            experiences, from spa rituals to rooftop evenings with live acoustic
+            sets.
+          </p>
+        </div>
+
+        <div class="amenities">
+          <div class="amenity-photo">
+            <img
+              src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1600&q=80"
+              alt="Hotel pool with lounge area and palm trees"
+            />
+          </div>
+          <div class="amenity-list">
+            <article class="amenity-item">
+              <h3>Aurora Spa</h3>
+              <p>
+                Signature ocean-salt therapy, steam suites, and evening
+                sound-bath sessions.
+              </p>
+            </article>
+            <article class="amenity-item">
+              <h3>Sky Deck Pool</h3>
+              <p>
+                Infinity pool with cabana service and handcrafted mocktails
+                inspired by local botanicals.
+              </p>
+            </article>
+            <article class="amenity-item">
+              <h3>Marina Table</h3>
+              <p>
+                A chef-led tasting menu featuring fresh coastal ingredients and
+                seasonal cuisine.
+              </p>
+            </article>
+            <article class="amenity-item">
+              <h3>Private Excursions</h3>
+              <p>
+                Sailing, cliffside picnics, and sunrise photography tours
+                arranged by our concierge.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="container fade-section" id="reviews">
+        <div class="testimonial-wrap">
+          <p class="eyebrow">Guest Stories</p>
+          <h2>"A stay that feels like a film set, but warmer."</h2>
+          <div class="testimonial-grid">
+            <blockquote>
+              <p>
+                "The suite felt impossibly serene. Every detail, from lighting
+                to scent, was incredibly intentional."
+              </p>
+              <cite>Amelia T. | London</cite>
+            </blockquote>
+            <blockquote>
+              <p>
+                "Best hotel breakfast I have had in years, and the concierge
+                crafted a perfect anniversary itinerary."
+              </p>
+              <cite>Noah R. | Toronto</cite>
+            </blockquote>
+            <blockquote>
+              <p>
+                "I came for three nights and stayed six. The rooftop pool at
+                sunset is genuinely unforgettable."
+              </p>
+              <cite>Lena K. | Berlin</cite>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <section class="container fade-section" id="stay">
+        <div class="cta">
+          <div class="cta-content">
+            <p class="eyebrow">Limited Summer Offer</p>
+            <h2>Book 3 nights, enjoy the 4th night with our compliments.</h2>
+            <p>
+              Includes late checkout, sunrise yoga session, and daily artisan
+              breakfast for two.
+            </p>
+            <button class="btn btn-primary" type="button">
+              Claim This Offer
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <p>Solara Cove Hotel | Ocean Avenue, Algarve</p>
+        <p>hello@solaracove.com | +351 912 000 880</p>
+      </div>
+    </footer>
+
+    <script>
+      const sections = document.querySelectorAll(".fade-section");
+      const reveal = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+              reveal.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+
+      sections.forEach((section) => reveal.observe(section));
+    </script>
+  </body>
+</html>
