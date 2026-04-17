@@ -381,6 +381,125 @@ section {
   font-size: 0.92rem;
 }
 
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.experience-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid rgba(184, 144, 86, 0.16);
+  box-shadow: var(--shadow);
+}
+
+.experience-card img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.experience-body {
+  padding: 1rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 700;
+  color: var(--sea-deep);
+  border: 1px solid rgba(10, 72, 80, 0.35);
+  background: rgba(15, 99, 107, 0.08);
+  margin-bottom: 0.6rem;
+}
+
+.experience-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.35rem;
+}
+
+.experience-card p {
+  color: var(--muted);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 0.85rem;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  min-height: 170px;
+  box-shadow: 0 14px 30px rgba(9, 28, 32, 0.12);
+  border: 1px solid rgba(31, 42, 48, 0.08);
+}
+
+.gallery-grid img:first-child {
+  grid-row: span 2;
+  min-height: 350px;
+}
+
+.faq-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.faq-item {
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(31, 42, 48, 0.12);
+  background: rgba(255, 250, 242, 0.72);
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  padding: 1rem;
+  font: inherit;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+  position: relative;
+}
+
+.faq-question::after {
+  content: "+";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25rem;
+  color: var(--sea-deep);
+}
+
+.faq-question[aria-expanded="true"]::after {
+  content: "-";
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 260ms ease;
+}
+
+.faq-answer p {
+  padding: 0 1rem 1rem;
+  color: var(--muted);
+}
+
 .testimonial-wrap {
   background:
     linear-gradient(125deg, rgba(10, 72, 80, 0.93), rgba(14, 96, 104, 0.9)),
@@ -511,8 +630,18 @@ footer {
   }
 
   .rooms-grid,
+  .experience-grid,
   .testimonial-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-grid img:first-child {
+    grid-row: span 1;
+    min-height: 220px;
   }
 
   .amenities {
@@ -548,7 +677,12 @@ footer {
 
   .hero-stats,
   .rooms-grid,
+  .experience-grid,
   .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
     grid-template-columns: 1fr;
   }
 
