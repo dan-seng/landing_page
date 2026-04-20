@@ -20,7 +20,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
@@ -475,23 +475,25 @@ section {
 }
 
 .faq-question::after {
-  content: "+";
+  content: "";
   position: absolute;
   right: 1rem;
   top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.25rem;
-  color: var(--sea-deep);
+  width: 0.55rem;
+  height: 0.55rem;
+  border-right: 2px solid var(--sea-deep);
+  border-bottom: 2px solid var(--sea-deep);
+  transform: translateY(-62%) rotate(45deg);
+  transition: transform 220ms ease;
 }
 
 .faq-question[aria-expanded="true"]::after {
-  content: "-";
+  transform: translateY(-40%) rotate(-135deg);
 }
 
 .faq-answer {
-  max-height: 0;
+  height: 0;
   overflow: hidden;
-  transition: max-height 260ms ease;
 }
 
 .faq-answer p {
