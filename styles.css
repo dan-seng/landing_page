@@ -66,6 +66,11 @@ a {
   border-bottom: 1px solid rgba(31, 42, 48, 0.08);
 }
 
+.top-nav.is-scrolled {
+  background: rgba(246, 239, 231, 0.9);
+  box-shadow: 0 12px 24px rgba(9, 28, 32, 0.11);
+}
+
 .top-nav .container {
   display: flex;
   align-items: center;
@@ -97,6 +102,11 @@ a {
 
 .nav-links a:hover {
   opacity: 1;
+}
+
+.nav-links a.is-active {
+  opacity: 1;
+  color: var(--sea-deep);
 }
 
 .book-btn {
@@ -793,6 +803,7 @@ footer {
 
 .scroll-image {
   --anim-delay: 0ms;
+  --hover-tilt: 0deg;
   opacity: 0;
   transform: translate3d(0, 44px, 0) scale(0.92);
   filter: saturate(0.45) brightness(0.84);
@@ -811,6 +822,10 @@ footer {
     outline-color 760ms ease;
   transition-delay: var(--anim-delay, 0ms);
   will-change: transform, opacity, clip-path, box-shadow;
+}
+
+.scroll-image.is-leaving {
+  transition-duration: 640ms, 720ms, 520ms, 640ms, 620ms, 520ms;
 }
 
 .scroll-image.anim-rise-left,
@@ -854,6 +869,15 @@ footer {
     0 0 0 10px color-mix(in srgb, var(--glow-color, #0f636b) 24%, transparent 76%),
     0 16px 34px color-mix(in srgb, var(--glow-color, #0f636b) 35%, transparent 65%);
   animation: colorPulse 1050ms ease-out both;
+}
+
+.scroll-image.is-visible:hover,
+.scroll-image.is-visible.is-hovered {
+  transform: translate3d(0, -6px, 0) rotate(var(--hover-tilt)) scale(1.03);
+  filter: saturate(1.08) brightness(1.04) contrast(1.02);
+  box-shadow:
+    0 0 0 12px color-mix(in srgb, var(--glow-color, #0f636b) 28%, transparent 72%),
+    0 24px 40px color-mix(in srgb, var(--glow-color, #0f636b) 42%, transparent 58%);
 }
 
 @keyframes colorPulse {
