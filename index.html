@@ -420,6 +420,45 @@
       </section>
     </div>
 
+    <div class="gallery-lightbox" id="galleryLightbox" aria-hidden="true">
+      <div class="gallery-lightbox__backdrop" data-lightbox-close></div>
+      <section
+        class="gallery-lightbox__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="lightboxCaption"
+      >
+        <button
+          class="gallery-lightbox__close"
+          type="button"
+          aria-label="Close gallery"
+          data-lightbox-close
+        >
+          ×
+        </button>
+        <button
+          class="gallery-lightbox__nav gallery-lightbox__nav--prev"
+          type="button"
+          aria-label="Previous image"
+          data-lightbox-prev
+        >
+          ‹
+        </button>
+        <figure class="gallery-lightbox__figure">
+          <img id="lightboxImage" src="" alt="" />
+          <figcaption id="lightboxCaption"></figcaption>
+        </figure>
+        <button
+          class="gallery-lightbox__nav gallery-lightbox__nav--next"
+          type="button"
+          aria-label="Next image"
+          data-lightbox-next
+        >
+          ›
+        </button>
+      </section>
+    </div>
+
     <script type="module" src="script.js"></script>
   </body>
 </html>

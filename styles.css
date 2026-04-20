@@ -441,6 +441,7 @@ section {
   min-height: 170px;
   box-shadow: 0 14px 30px rgba(9, 28, 32, 0.12);
   border: 1px solid rgba(31, 42, 48, 0.08);
+  cursor: zoom-in;
 }
 
 .gallery-grid img:first-child {
@@ -762,6 +763,109 @@ footer {
   width: fit-content;
 }
 
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 140;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 220ms ease,
+    visibility 0ms linear 220ms;
+}
+
+.gallery-lightbox.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    opacity 220ms ease,
+    visibility 0ms linear 0ms;
+}
+
+.gallery-lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 16, 20, 0.86);
+  backdrop-filter: blur(5px);
+}
+
+.gallery-lightbox__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(96vw, 1180px);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.gallery-lightbox__figure {
+  margin: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(10, 18, 20, 0.78);
+  box-shadow: 0 28px 52px rgba(0, 0, 0, 0.36);
+}
+
+.gallery-lightbox__figure img {
+  width: 100%;
+  max-height: min(74vh, 860px);
+  object-fit: contain;
+  background: rgba(10, 18, 20, 0.9);
+}
+
+.gallery-lightbox__figure figcaption {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.92rem;
+  padding: 0.72rem 0.9rem 0.82rem;
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.gallery-lightbox__close,
+.gallery-lightbox__nav {
+  border: 0;
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+  cursor: pointer;
+}
+
+.gallery-lightbox__close {
+  position: absolute;
+  top: -0.6rem;
+  right: -0.4rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.gallery-lightbox__nav {
+  width: 2.9rem;
+  height: 2.9rem;
+  font-size: 2rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+}
+
+.gallery-lightbox__close:hover,
+.gallery-lightbox__nav:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.gallery-lightbox__close:focus-visible,
+.gallery-lightbox__nav:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
 .animate-on-scroll:not(.scroll-image) {
   --anim-delay: 0ms;
   opacity: 0;
@@ -1020,5 +1124,36 @@ footer {
 
   .booking-grid {
     grid-template-columns: 1fr;
+  }
+
+  .gallery-lightbox__dialog {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+  }
+
+  .gallery-lightbox__close {
+    top: 0.35rem;
+    right: 0.35rem;
+    width: 2.15rem;
+    height: 2.15rem;
+    font-size: 1.4rem;
+  }
+
+  .gallery-lightbox__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.4rem;
+    height: 2.4rem;
+    font-size: 1.5rem;
+    z-index: 2;
+  }
+
+  .gallery-lightbox__nav--prev {
+    left: 0.35rem;
+  }
+
+  .gallery-lightbox__nav--next {
+    right: 0.35rem;
   }
 }
