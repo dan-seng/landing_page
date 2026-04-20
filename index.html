@@ -29,7 +29,9 @@
           <a href="#faq">FAQ</a>
           <a href="#stay">Stay</a>
         </nav>
-        <button class="book-btn" type="button">Book Now</button>
+        <button class="book-btn" type="button" data-book-trigger>
+          Book Now
+        </button>
       </div>
     </header>
 
@@ -43,7 +45,7 @@
           that feel cinematic and deeply restful.
         </p>
         <div class="hero-actions">
-          <button class="btn btn-primary" type="button">
+          <button class="btn btn-primary" type="button" data-book-trigger>
             Reserve Your Suite
           </button>
           <button class="btn btn-secondary" type="button">
@@ -68,7 +70,12 @@
     </section>
 
     <main>
-      <section class="container fade-section" id="rooms">
+      <section
+        class="container fade-section"
+        id="rooms"
+        data-stagger=".section-head, .room-card"
+        data-stagger-step="120"
+      >
         <div class="section-head">
           <h2>Signature Stays</h2>
           <p>
@@ -135,7 +142,11 @@
         </div>
       </section>
 
-      <section class="container fade-section" id="amenities">
+      <section
+        class="container fade-section"
+        id="amenities"
+        data-stagger=".section-head, .amenity-photo, .amenity-item"
+      >
         <div class="section-head">
           <h2>Curated Amenities</h2>
           <p>
@@ -185,7 +196,11 @@
         </div>
       </section>
 
-      <section class="container fade-section" id="experiences">
+      <section
+        class="container fade-section"
+        id="experiences"
+        data-stagger=".section-head, .experience-card"
+      >
         <div class="section-head">
           <h2>Signature Experiences</h2>
           <p>
@@ -243,7 +258,11 @@
         </div>
       </section>
 
-      <section class="container fade-section" id="gallery">
+      <section
+        class="container fade-section"
+        id="gallery"
+        data-stagger=".section-head, .gallery-grid img"
+      >
         <div class="section-head">
           <h2>Moments at North Star</h2>
           <p>
@@ -276,7 +295,11 @@
         </div>
       </section>
 
-      <section class="container fade-section" id="reviews">
+      <section
+        class="container fade-section"
+        id="reviews"
+        data-stagger=".testimonial-wrap, .testimonial-grid blockquote"
+      >
         <div class="testimonial-wrap">
           <p class="eyebrow">Guest Stories</p>
           <h2>"A stay that feels like a film set, but warmer."</h2>
@@ -306,7 +329,11 @@
         </div>
       </section>
 
-      <section class="container fade-section" id="faq">
+      <section
+        class="container fade-section"
+        id="faq"
+        data-stagger=".section-head, .faq-item"
+      >
         <div class="section-head">
           <h2>Questions Before You Arrive</h2>
           <p>
@@ -366,7 +393,7 @@
         </div>
       </section>
 
-      <section class="container fade-section" id="stay">
+      <section class="container fade-section" id="stay" data-stagger=".cta">
         <div class="cta">
           <div class="cta-content">
             <p class="eyebrow">Limited Summer Offer</p>
@@ -375,7 +402,7 @@
               Includes late checkout, sunrise yoga session, and daily artisan
               breakfast for two.
             </p>
-            <button class="btn btn-primary" type="button">
+            <button class="btn btn-primary" type="button" data-book-trigger>
               Claim This Offer
             </button>
           </div>
@@ -389,6 +416,63 @@
         <p>hello@solaracove.com | +351 912 000 880</p>
       </div>
     </footer>
+
+    <div class="booking-modal" id="bookingModal" aria-hidden="true">
+      <div class="booking-modal__backdrop" data-book-close></div>
+      <section
+        class="booking-modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="bookingTitle"
+      >
+        <button
+          class="booking-modal__close"
+          type="button"
+          aria-label="Close booking form"
+          data-book-close
+        >
+          ×
+        </button>
+        <p class="booking-modal__eyebrow">Book Your Escape</p>
+        <h2 id="bookingTitle">Reserve your stay at North Star</h2>
+
+        <form class="booking-form" id="bookingForm">
+          <div class="booking-grid">
+            <label class="booking-field">
+              <span>Check-in</span>
+              <input type="date" id="checkInDate" required />
+            </label>
+            <label class="booking-field">
+              <span>Check-out</span>
+              <input type="date" id="checkOutDate" required />
+            </label>
+          </div>
+
+          <div class="booking-guests">
+            <span class="booking-field-label">Guests</span>
+            <div class="guest-counter">
+              <button type="button" data-guest-action="decrement" aria-label="Decrease guests">
+                −
+              </button>
+              <output id="guestCount" aria-live="polite">2</output>
+              <button type="button" data-guest-action="increment" aria-label="Increase guests">
+                +
+              </button>
+            </div>
+          </div>
+
+          <input type="hidden" id="guestCountInput" name="guests" value="2" />
+
+          <p class="booking-note" id="bookingSummary">
+            2 guests, select your check-in and check-out dates.
+          </p>
+
+          <button class="btn btn-primary booking-submit" type="submit">
+            Confirm Booking
+          </button>
+        </form>
+      </section>
+    </div>
 
     <script src="script.js"></script>
   </body>
