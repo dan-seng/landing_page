@@ -26,8 +26,10 @@ const bootstrap = () => {
   bookingComponent.init();
 
   const navbarComponent = new NavbarComponent({
-    navSelector: '.top-nav',
-    linkSelector: '.nav-links a',
+    navSelector: '[data-navbar]',
+    linkSelector: '[data-nav-links] a',
+    menuButtonSelector: '[data-nav-toggle]',
+    menuPanelSelector: '[data-nav-panel]',
   });
   navbarComponent.init();
 };

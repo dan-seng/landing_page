@@ -14,22 +14,65 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="top-nav">
-      <div class="container">
-        <a href="#home" class="brand">Coastal Luxury Hotel</a>
-        <nav class="nav-links">
-          <a href="#rooms">Rooms</a>
-          <a href="#amenities">Amenities</a>
-          <a href="#experiences">Experiences</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#reviews">Reviews</a>
-          <a href="#faq">FAQ</a>
-          <a href="#stay">Stay</a>
+    <header
+      class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/65 text-white backdrop-blur-xl transition-all duration-300"
+      data-navbar
+    >
+      <div class="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-5 py-4 md:px-8">
+        <a href="#home" class="group inline-flex items-center gap-2">
+          <span class="inline-block h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_20px_rgba(103,232,249,0.9)]"></span>
+          <span class="text-lg font-semibold tracking-wide text-white/95">Solara Cove</span>
+        </a>
+
+        <button
+          type="button"
+          class="inline-flex h-10 items-center justify-center rounded-full border border-white/25 px-4 text-sm font-medium text-white/90 transition hover:border-cyan-300/80 hover:text-cyan-200 md:hidden"
+          aria-controls="mobileNavPanel"
+          aria-expanded="false"
+          data-nav-toggle
+        >
+          Menu
+        </button>
+
+        <div class="hidden items-center gap-4 md:flex">
+          <nav class="flex items-center gap-1 rounded-full border border-white/15 bg-white/5 px-2 py-1" data-nav-links>
+            <a href="#rooms" class="rounded-full px-3 py-2 text-sm font-medium text-white/80 transition hover:bg-white/10 hover:text-white">Rooms</a>
+            <a href="#amenities" class="rounded-full px-3 py-2 text-sm font-medium text-white/80 transition hover:bg-white/10 hover:text-white">Amenities</a>
+            <a href="#experiences" class="rounded-full px-3 py-2 text-sm font-medium text-white/80 transition hover:bg-white/10 hover:text-white">Experiences</a>
+            <a href="#gallery" class="rounded-full px-3 py-2 text-sm font-medium text-white/80 transition hover:bg-white/10 hover:text-white">Gallery</a>
+            <a href="#reviews" class="rounded-full px-3 py-2 text-sm font-medium text-white/80 transition hover:bg-white/10 hover:text-white">Reviews</a>
+            <a href="#faq" class="rounded-full px-3 py-2 text-sm font-medium text-white/80 transition hover:bg-white/10 hover:text-white">FAQ</a>
+            <a href="#stay" class="rounded-full px-3 py-2 text-sm font-medium text-white/80 transition hover:bg-white/10 hover:text-white">Stay</a>
+          </nav>
+          <button
+            class="inline-flex items-center justify-center rounded-full bg-cyan-300 px-5 py-2 text-sm font-semibold text-slate-900 shadow-[0_10px_30px_rgba(103,232,249,0.35)] transition hover:-translate-y-0.5 hover:bg-cyan-200"
+            type="button"
+            data-book-trigger
+          >
+            Book Now
+          </button>
+        </div>
+      </div>
+
+      <div class="hidden border-t border-white/10 bg-slate-950/90 px-5 pb-5 pt-4 md:hidden" id="mobileNavPanel" data-nav-panel>
+        <nav class="grid gap-2" data-nav-links>
+          <a href="#rooms" class="rounded-xl px-3 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white">Rooms</a>
+          <a href="#amenities" class="rounded-xl px-3 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white">Amenities</a>
+          <a href="#experiences" class="rounded-xl px-3 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white">Experiences</a>
+          <a href="#gallery" class="rounded-xl px-3 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white">Gallery</a>
+          <a href="#reviews" class="rounded-xl px-3 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white">Reviews</a>
+          <a href="#faq" class="rounded-xl px-3 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white">FAQ</a>
+          <a href="#stay" class="rounded-xl px-3 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white">Stay</a>
         </nav>
-        <button class="book-btn" type="button" data-book-trigger>
+        <button
+          class="mt-4 inline-flex w-full items-center justify-center rounded-xl bg-cyan-300 px-5 py-3 text-sm font-semibold text-slate-900 shadow-[0_10px_30px_rgba(103,232,249,0.35)] transition hover:bg-cyan-200"
+          type="button"
+          data-book-trigger
+        >
           Book Now
         </button>
       </div>
